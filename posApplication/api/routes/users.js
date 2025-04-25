@@ -7,19 +7,19 @@ router.get("/get-all-users", async (req, res) => {
     const users = await User.find();
     res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
   }
 });
 //get user
 router.get("/", async (req, res) => {
-    const userID = req.body.userID;
-   
-    try {
-      const user= await User.finById(userID);
-      res.status(200).json(user);
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  const userID = req.body.userID;
+
+  try {
+    const user = await User.findById(userID);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;
