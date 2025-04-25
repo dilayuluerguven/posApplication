@@ -8,7 +8,7 @@ router.get("/get-all", async (req, res) => {
     //res.send(bills);
     res.status(200).json(bills);
   } catch (error) {
-    console.log(error);
+    res.status(400).json(error);
   }
 });
 
